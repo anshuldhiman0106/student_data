@@ -62,13 +62,14 @@ export default function StudentDashboard() {
 
       {/* SIDEBAR */}
       <aside className="w-full md:w-64 p-4 md:p-6 backdrop-blur-xl bg-[var(--sidebar-bg)] shadow-xl border-b md:border-b-0 md:border-r border-[var(--glass-border)]">
+
         <h1 className="text-xl md:text-2xl font-bold mb-6">Dashboard</h1>
 
         <div className="space-y-4">
           <div>
             <p className="text-sm font-medium mb-1">Search</p>
             <input
-              className="w-full px-3 py-2 rounded-lg bg-[var(--glass-bg)] shadow focus:bg-white"
+              className="w-full px-3 py-2 rounded-lg bg-[var(--glass-bg)] shadow focus:bg-black/90 "
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value)
@@ -81,7 +82,7 @@ export default function StudentDashboard() {
           <div>
             <p className="text-sm font-medium mb-1">Filter Class</p>
             <select
-              className="w-full px-3 py-2 rounded bg-black/90 shadow"
+              className="w-full px-3 py-2 rounded bg-[var(--glass-bg)] shadow focus:bg-black/90"
               value={filterClass}
               onChange={(e) => setFilterClass(e.target.value)}
             >
@@ -159,7 +160,7 @@ export default function StudentDashboard() {
           <div>
             <p className="text-sm font-medium mb-1">Semester</p>
             <select
-              className="w-full px-3 py-2 rounded bg-black/90 shadow"
+              className="w-full px-3 py-2 rounded bg-[var(--glass-bg)] focus:bg-black/90 shadow"
               value={filterSemester}
               onChange={(e) => setFilterSemester(e.target.value)}
             >
