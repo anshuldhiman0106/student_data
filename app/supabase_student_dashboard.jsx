@@ -48,6 +48,26 @@ export default function StudentDashboard() {
           console.warn('Failed to get initial session', e)
         }
 
+        // If the OAuth callback returned tokens in the URL fragment (e.g. when
+        // provider redirects directly to the site), parse them and set the
+        // session so the client becomes authenticated. This helps if the
+        // browser was redirected to an origin and the app needs to pick up the
+        // access token from the URL.
+        try {
+          if (typeof window !== 'undefined' && window.location && window.location.hash) {
+            const hash = window.location.hash.substring(1)
+            const params = Object.fromEntries(new URLSearchParams(hash))
+            if (params.access_token) {
+              await client.auth.setSession({ access_token: params.access_token, refresh_token: params.refresh_token })
+              // Remove fragment to keep URL clean
+              history.replaceState(null, '', window.location.pathname + window.location.search)
+            }
+          }
+        } catch (e) {
+          // non-fatal
+          console.debug('No URL token to set or failed to set session', e)
+        }
+
         const { data: subscription } = client.auth.onAuthStateChange((event, session) => {
           const user = session?.user || null
           setAuthUser(user)
