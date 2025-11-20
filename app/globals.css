@@ -40,3 +40,18 @@ body {
 
   --card-bg: rgba(255, 255, 255, 0.06);
 }
+
+/* Utility classes mapping to CSS variables so components can use
+   `bg-<variable_name>` and `text-<variable_name>` style classes. */
+.bg-bg-main { background: var(--bg-main); }
+.bg-bg-accent { background: var(--bg-accent); }
+.bg-glass-bg { background: var(--glass-bg); }
+.bg-sidebar-bg { background: var(--sidebar-bg); }
+.bg-card-bg { background: var(--card-bg); }
+
+.border-glass-border { border-color: var(--glass-border); }
+
+.text-text-main { color: var(--text-main); }
+.text-text-light { color: var(--text-light); }
+
+
