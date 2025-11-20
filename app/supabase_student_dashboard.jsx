@@ -256,7 +256,7 @@ export default function StudentDashboard() {
       // Fallback to the deployed site if origin is not available.
       const redirectTo = (typeof window !== 'undefined' && window.location && window.location.origin)
         ? window.location.origin
-        : 'https://student-data-six-peach.vercel.app'
+        : '/'
 
       await supabaseClient.auth.signInWithOAuth({ provider, options: { redirectTo } })
     } catch (err) {
