@@ -250,8 +250,15 @@ export default function StudentDashboard() {
   const handleOAuthSignIn = async (provider) => {
     if (!supabaseClient) return alert('Supabase not ready')
     try {
-      // Supabase will redirect to the provider's consent screen
-      await supabaseClient.auth.signInWithOAuth({ provider })
+      // Supabase will redirect to the provider's consent screen.
+      // Use the current origin as the OAuth redirect target so the flow
+      // returns to the same host the user started from (local or deployed).
+      // Fallback to the deployed site if origin is not available.
+      const redirectTo = (typeof window !== 'undefined' && window.location && window.location.origin)
+        ? window.location.origin
+        : 'https://student-data-six-peach.vercel.app'
+
+      await supabaseClient.auth.signInWithOAuth({ provider, options: { redirectTo } })
     } catch (err) {
       console.error('OAuth sign in failed', err)
       alert('OAuth sign in failed: ' + (err.message || String(err)))
