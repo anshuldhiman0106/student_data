@@ -456,14 +456,14 @@ export default function StudentDashboard() {
               onChange={(e) => setFilterSemester(e.target.value)}
             >
               <option value="">All Semesters</option>
-              <option>1st Semester</option>
-              <option>2nd Semester</option>
-              <option>3rd Semester</option>
-              <option>4th Semester</option>
-              <option>5th Semester</option>
-              <option>6th Semester</option>
-              <option>7th Semester</option>
-              <option>8th Semester</option>
+              <option>1st Sem</option>
+              <option>2nd Sem</option>
+              <option>3rd Sem</option>
+              <option>4th Sem</option>
+              <option>5th Sem</option>
+              <option>6th Sem</option>
+              <option>7th Sem</option>
+              <option>8th Sem</option>
               <option>1st Year</option>
               <option>2nd Year</option>
               <option>3rd Year</option>
